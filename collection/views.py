@@ -162,9 +162,10 @@ class CollectionListView(APIView):
         genre_count = {}
         for movie in movies:
             for genre in movie.genres.split(','):
-                genre_count[genre] = genre_count.get(genre, 0) + 1
+                if genre != '' and genre != ' ' and genre is not None:
+                    genre_count[genre] = genre_count.get(genre, 0) + 1
         sorted_genres = sorted(genre_count.items(), key=lambda x: x[1], reverse=True)
-        top_3_genres = [genre[0] for genre in sorted_genres[:3]] if len(sorted_genres) >= 3 else sorted_genres
+        top_3_genres = [genre[0] for genre in sorted_genres[:3] if genre[0] != ''] if len(sorted_genres) >= 3 else sorted_genres
         favourite_genres = ', '.join(top_3_genres) if top_3_genres else ""
     
         data = {

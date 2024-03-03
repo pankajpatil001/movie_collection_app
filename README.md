@@ -79,7 +79,7 @@ This document provides comprehensive documentation for the Movie Collection App 
 
 ### Authentication
 
-All endpoints require authentication using JWT Token authentication. You need to include the Authorization header in your requests with the value Bearer <your_token_here>.
+All endpoints except register and login require authentication using JWT Token authentication. You need to include the Authorization header in your requests with the value Bearer <your_token_here>.
 
 ## Endpoints
 
@@ -198,7 +198,7 @@ GET /collection/
 
 #### Description
 
-Retrieve all collection with top 3 favourite genres
+Retrieve all collections for a user with top 3 favourite genres
 
 #### Example
 
@@ -362,7 +362,6 @@ GET /request-count/
 #### Response Body:
 
 ```json
-Response:
 {
     "requests": "<number of requests served by this server till now>"
 }
